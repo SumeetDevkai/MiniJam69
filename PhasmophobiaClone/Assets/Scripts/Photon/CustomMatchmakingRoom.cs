@@ -45,8 +45,6 @@ public class CustomMatchmakingRoom : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         roomNameDisplay.text = PhotonNetwork.CurrentRoom.Name;
 
-        PhotonNetwork.ConnectUsingSettings();
-
         if (PhotonNetwork.IsMasterClient)
         {
             startButton.SetActive(true);
@@ -61,6 +59,7 @@ public class CustomMatchmakingRoom : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        Debug.Log("Player : " + newPlayer.NickName + "has entere the world");
         ClearPlayerListings();
         ListPlayers();
     }
@@ -73,13 +72,13 @@ public class CustomMatchmakingRoom : MonoBehaviourPunCallbacks
         {
             startButton.SetActive(true);
         }
-    }
+    } 
     public void startGame()
     {
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.LoadLevel("MainScene");
+            PhotonNetwork.LoadLevel(1);
         }
     }
 
@@ -97,5 +96,4 @@ public class CustomMatchmakingRoom : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveLobby();
         StartCoroutine(rejoinLobby());
     }
-
 }
