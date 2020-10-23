@@ -47,7 +47,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 	            if (Input.GetKey(RunKey))
 	            {
 		            CurrentTargetSpeed *= RunMultiplier;
-		            m_Running = true;
+                    m_Running = true;
 	            }
 	            else
 	            {
@@ -60,6 +60,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             public bool Running
             {
                 get { return m_Running; }
+                
             }
 #endif
         }
@@ -83,6 +84,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public AdvancedSettings advancedSettings = new AdvancedSettings();
 
 
+        public Animator anim;
         private Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
         private float m_YRotation;
@@ -134,6 +136,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_Jump = true;
             }
+            if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            {
+                anim.SetBool("walk", true);
+            }
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+            {
+                anim.SetBool("walk", false);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                anim.SetBool("run", true);
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                anim.SetBool("run", false);
+            }
+
         }
 
 
