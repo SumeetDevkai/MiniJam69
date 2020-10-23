@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 2700512940480999899}
   - component: {fileID: 2700512940480999898}
   - component: {fileID: 2700512940480999897}
-  - component: {fileID: 2700512940480999896}
+  - component: {fileID: 4608205045732406080}
   m_Layer: 0
   m_Name: PhotonPlayer
   m_TagString: Untagged
@@ -698,6 +698,7 @@ MonoBehaviour:
     slowDownRate: 20
     airControl: 0
     shellOffset: 0
+  photonView: {fileID: 2700512940480999897}
   anim: {fileID: 2700512940796886708}
 --- !u!114 &2700512940480999897
 MonoBehaviour:
@@ -718,11 +719,12 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 2700512940480999896}
+  - {fileID: 4608205045732406080}
+  - {fileID: 4225474790802465677}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2700512940480999896
+--- !u!114 &4608205045732406080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1121,6 +1123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2700512940796886709}
   - component: {fileID: 2700512940796886708}
+  - component: {fileID: 4225474790802465677}
   m_Layer: 0
   m_Name: summet Idle
   m_TagString: Untagged
@@ -1163,6 +1166,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4225474790802465677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2700512940796886603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: walk
+  - Type: 4
+    SynchronizeType: 2
+    Name: run
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
 --- !u!1 &2700512940835252946
 GameObject:
   m_ObjectHideFlags: 0
