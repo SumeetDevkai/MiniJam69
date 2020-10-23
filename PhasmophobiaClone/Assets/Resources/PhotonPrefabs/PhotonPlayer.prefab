@@ -1187,6 +1187,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: run
+  - Type: 1
+    SynchronizeType: 2
+    Name: x
+  - Type: 1
+    SynchronizeType: 2
+    Name: y
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

@@ -135,30 +135,53 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update()
         {
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+
+            Vector2 movement = new Vector2(horizontal, vertical);
+
+            if(movement.x > 0 || movement.x < 0)
+            {
+                anim.SetBool("walk",true);
+            }
+            else if(movement.y > 0 || movement.y < 0)
+            {
+                anim.SetBool("walk",true);
+            }
+            else
+            {
+                m_RigidBody.velocity = Vector3.zero;
+                anim.SetBool("walk", false);
+            }
+
+            anim.SetFloat("x", horizontal);
+            anim.SetFloat("y", vertical);
+
             if (photonView.IsMine)
             {
                 RotateView();
 
-                if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
-                {
-                    m_Jump = true;
-                }
-                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-                {
-                    anim.SetBool("walk", true);
-                }
-                if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-                {
-                    anim.SetBool("walk", false);
-                }
-                if (Input.GetKeyDown(KeyCode.LeftShift))
-                {
-                    anim.SetBool("run", true);
-                }
-                if (Input.GetKeyUp(KeyCode.LeftShift))
-                {
-                    anim.SetBool("run", false);
-                }
+
+                //if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
+                //{
+                //    m_Jump = true;
+                //}
+                //if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+                //{
+                //    anim.SetBool("walk", true);
+                //    if (Input.GetKeyDown(KeyCode.LeftShift))
+                //    {
+                //        anim.SetBool("run", true);
+                //    }
+                //    if (Input.GetKeyUp(KeyCode.LeftShift))
+                //    {
+                //        anim.SetBool("run", false);
+                //    }
+                //}
+                //if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.S) && Input.GetKeyUp(KeyCode.A) && Input.GetKeyUp(KeyCode.D))
+                //{
+                //    anim.SetBool("walk", false);
+                //}
             }
         }
 
