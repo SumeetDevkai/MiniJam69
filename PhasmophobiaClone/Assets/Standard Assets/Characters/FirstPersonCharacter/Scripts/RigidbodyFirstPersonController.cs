@@ -138,15 +138,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
+            bool running = false;
+
             Vector2 movement = new Vector2(horizontal, vertical);
+
 
             if(movement.x > 0 || movement.x < 0)
             {
                 anim.SetBool("walk",true);
+                running = Input.GetKey(KeyCode.LeftShift);
             }
             else if(movement.y > 0 || movement.y < 0)
             {
                 anim.SetBool("walk",true);
+                running = Input.GetKey(KeyCode.LeftShift);
             }
             else
             {
@@ -156,11 +161,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             anim.SetFloat("x", horizontal);
             anim.SetFloat("y", vertical);
+            anim.SetBool("run", running);
 
             if (photonView.IsMine)
             {
                 RotateView();
-
 
                 //if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
                 //{
